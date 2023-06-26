@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RJ'S WIDGET</title>
+    <script src="JSCodes/greet.js"></script>
+    <script src="WidgetCodes/greet-widget.js" defer></script>
+
+    <script src="JSCodes/enough-airtime.js"></script>
+    <script src="WidgetCodes/enough-airtime-widget.js"></script>
+
+    <script src="JSCodes/totalphonebill.js"></script>
+    <script src="WidgetCodes/totalphonebill-widget.js"></script>
+
+    <script src="JSCodes/word-game.js"></script>
+    <script src="WidgetCodes/wordGame-widget.js"></script>
+
+
+    <script src="JSCodes/transportFee.js"></script>
+    <script src="WidgetCodes/transportFee-widget.js"></script>
+
+
+    <script src="JSCodes/final-exercise.js"></script>
+    <script src="WidgetCodes/final-exercise-widget.js"></script>
+
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script>console.log(greet("Siya"))</script>
+    <style>
+        .message {
+            padding: 1em;
+            background-color: lightcoral;
+            margin-bottom: 1em;
+        }
+
+        .input>label {
+            display: inline-block;
+            width: 15em;
+            padding: 0.5em;
+            font-weight: bold;
+            font-family: cursive;
+        }
+
+        .input>input[type="text"] {
+            padding: 0.5em;
+            margin: 0.5em;
+        }
+
+        .widget {
+            flex: 1;
+            border: 1px solid lightsalmon;
+            margin: 1em;
+            padding: 1em;
+            border-radius: 0.5em;
+        }
+
+        .widgets {
+            display: flex;
+        }
+
+        .widgets-2 {
+            display: flex;
+        }
+    </style>
+
+
+ <!-- Compiled and minified CSS -->
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+ <!-- Compiled and minified JavaScript -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+
+<body>
+
+
+
+<div class="container">
+    <section>
+        <div style="text-align: center;">
+            <h3>BOOTCAMP TESTING WITH ALPINEJS</h3>
+
+        </div>
+    </section>
+    <hr>
+    <section>
+
+        <div class="row">
+
+            <div class="col l6">
+                <!-- Greetings widget starts here -->
+
+        <div class="widget" x-data="greetWidget">
+            <h5>GREETINGS WIDGET</h5>
+            <br><br>
+
+            <div x-show="message.length > 0" class="message" x-text="message">
+                Greeting comes here...
+            </div>
+
+            <label for="name">Please enter your name: </label>
+            <input type="text" x-model="name" id="name">
+
+            <button x-on:click="greetMe">Greet!</button>
+        </div>
+
+        <!-- greeting widget ends here -->
+
+            </div>
+            <div class="col l6">
+               <!-- enough airtime widget starts here -->
+
+        <div class="widget" x-data="enoughAirtimeWidget">
+
+            <h5>AIRTIME USAGE WIDGET</h5>
+
+            <div class="input">
+                <label for="usage">Airtime usage: </label>
+                <input type="text" x-model="airtimeUsage" id="usage">
+            </div>
+
+            <div class="input">
+                <label for="amount">Amount available: </label>
+                <input type="text" x-model="availableAirtime" id="amount">
+            </div>
+
+            <div x-show="airtimeMessage.length > 0" class="message" x-text="airtimeMessage">
+
+            </div>
+
+            <div>
+                <button x-on:click="calculate()">Calculate airtime usage</button>
+            </div>
+
+        </div>
+
+    </div>
+    </section>
+    <hr>
+    <section>
+
+        <div class="row">
+            <div class="col l6">
+
+                <div class="widget" x-data="totalPhoneBillWidget">
+
+                    <h5>TOTAL PHONE BILL WIDGET</h5>
+        
+                    <div class="input">
+                        <label for="bill">Phone usage: </label>
+                        <input type="text" x-model="statement" id="bill">
+                    </div>
+        
+                    <div>
+                        <button x-on:click="calculateBill">Calculate total bill</button>
+                    </div>
+        
+                    <div x-show="billMessage.length > 0" class="message" x-text="billMessage">
+        
+                    </div>
+                </div>
+            </div>
+              <!-- total phone widget ends here -->
+
+              <!-- Word game widget starts here -->
+
+            <div class="col l6">
+                <div class="widget" x-data="wordGameWidget">
+                    <h5>WORD GAME WIDGET</h5>
+        
+                    <div>
+                        <label for="words">Sentence: </label>
+                        <input type="text" x-model="sentence" id="words">
+                    </div>
+        
+                    <div>
+                        <button x-on:click="solve()">Solve</button>
+                    </div>
+        
+                    <div x-show="longWord.length > 0" class="message" x-text="longWord">
+                        Longest word...
+                    </div>
+        
+                    <div x-show="shortWord.length > 0" class="message" x-text="shortWord">
+                        Shortest word
+                    </div>
+        
+                    <div x-show="sumOfLetters.length > 0" class="message" x-text="sumOfLetters">
+                        Sum of letters...
+                    </div>
+                </div>
+            </div>
+                    <!-- Word game widget ends here -->                    
+    </section>
+    <hr>
+<section>
+
+<div class="row">
+
+    <div class="col l6">
+             <!-- Transport Fee starts here -->
+
+        <div class="widget" x-data="TransportFeeWidget">
+            <h5>TRANSPORT FEE WIDGET</h5>
+
+            <div>
+                <label for="words"><strong>Enter your shift:</strong></label>
+                <input type="text" x-model="sentence" id="words">
+            </div>
+
+            <div>
+                <button x-on:click="solve()">Solve</button>
+            </div>
+
+            <div x-show="nightshift.length > 0" class="message" x-text="nightshift">
+                NightShift Fee is ..
+            </div>
+
+            <div x-show="morning > 0" class="message" x-text="morning">
+                Morning Shift Fee is ..
+            </div>
+
+            <div x-show="afternoon > 0" class="message" x-text="afternoon">
+                Afternoon Shift Fee is ..
+            </div>
+
+        </div>
+
+        <!-- Transport Fee ends here -->
+
+    </div>
+
+    <div class="col l6">
+            <!-- Word game widget starts here -->
+
+              <div class="widget" x-data="FinalExerciseWidget">
+                  <h5>FINAL EXERCISE WIDGET</h5>
+      
+                  <div>
+                      <label for="words">Sentence: </label>
+                      <input type="text" x-model="sentence" id="words">
+                  </div>
+      
+                  <div>
+                      <button x-on:click="solve()">Solve</button>
+                  </div>
+      
+                  <div x-show="PopularCars.length > 0" class="message" x-text="PopularCars">
+                      Longest word...
+                  </div>
+      
+                  <div x-show="Nissanfromck.length > 0" class="message" x-text="Nissanfromck">
+                      Shortest word
+                  </div>
+      
+                  <div x-show="MostBlue.length > 0" class="message" x-text="MostBlue">
+                      Sum of letters...
+                  </div>
+
+                  <div x-show="FewestOrange.length > 0" class="message" x-text="FewestOrange">
+                    Sum of letters...
+                </div>
+
+                <div x-show="PopularModel.length > 0" class="message" x-text="PopularModel">
+                    Sum of letters...
+                </div>
+
+                <div x-show="PopularCL.length > 0" class="message" x-text="PopularCL">
+                    Sum of letters...
+                </div>
+
+                <div x-show="LeastPopular.length > 0" class="message" x-text="LeastPopular">
+                    Sum of letters...
+                </div>
+
+                <div x-show="CarsFromTown.length > 0" class="message" x-text="CarsFromTown">
+                    Sum of letters...
+                </div>
+
+                <div x-show="NumberOfCars.length > 0" class="message" x-text="NumberOfCars">
+                    Sum of letters...
+                </div>
+
+                <div x-show="NumberperModel.length > 0" class="message" x-text="NumberperModel">
+                    Sum of letters...
+                </div>
+
+                <div x-show="PopularColor.length > 0" class="message" x-text="PopularColor">
+                    Sum of letters...
+                </div>
+              </div>
+          </div>
+                  <!-- Word game widget ends here -->     
+
+
+
+
+
+
+    </div>
+
+
+</div>
+
+</section>
+
+<hr>
+</div>
+
+
+</body>
+
+</html>
